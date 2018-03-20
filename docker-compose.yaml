@@ -1,0 +1,42 @@
+version: '3'
+services:
+  chrome_node:
+    image: selenium/node-chrome
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+
+  chrome_node_debug:
+    image: selenium/node-chrome-debug
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+
+  firefox_node:
+    image: selenium/node-firefox
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+
+  firefox_node_debug:
+    image: selenium/node-firefox-debug
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+
+  hub:
+    image: selenium/hub
+      ports:
+        - "4444:4444"
